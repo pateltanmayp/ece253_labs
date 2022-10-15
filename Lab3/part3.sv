@@ -10,10 +10,10 @@ module part3(A, B, Function, ALUout);
 	begin
 		case (Function)
 			2'b00: ALUout = A + B;
-			2'b01: ALUout = |(A | B); // Output 8’b00000001 if at least 1 of the 8 bits in the two inputs is 1 using a single OR operation.
-			2'b10: ALUout = &(A & B); // Output 8’b00000001 if all of the 8 bits in the two inputs are 1 using a single AND operation.
+			2'b01: ALUout = |{A, B}; // Output 8’b00000001 if at least 1 of the 8 bits in the two inputs is 1 using a single OR operation.
+			2'b10: ALUout = &{A, B}; // Output 8’b00000001 if all of the 8 bits in the two inputs are 1 using a single AND operation.
 			2'b11: ALUout = {A, B}; // Display A in the most significant four bits and B in the lower four bits.
-			default: ALUout = 8'b00000001;
+			default: ALUout = 1'b0;
 		endcase
 	end
 endmodule
@@ -36,6 +36,7 @@ module fa(input logic a, b, c_in, output logic s, c_out);
 		case (s_i1)
 			1'b0: c_out = b;
 			1'b1: c_out = c_in;
+			default: c_out = 1'b1;
 		endcase
 	end
 endmodule

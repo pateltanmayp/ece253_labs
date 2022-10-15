@@ -7,7 +7,7 @@ module part1(input logic [3:0]  a, b, input logic c_in, output logic [3:0] s, c_
 	fa fa4(.a(a[3]), .b(b[3]), .c_in(c_out[2]), .s(s[3]), .c_out(c_out[3]));
 endmodule
 
-module fa(input logic [3:0] a, b, input logic c_in, output logic [3:0] s, c_out);
+module fa(input logic a, b, c_in, output logic s, c_out);
 	logic s_i1;
 
 	assign s_i1 = a ^ b;
