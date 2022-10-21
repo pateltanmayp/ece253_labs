@@ -10,9 +10,9 @@ module part3(A, B, Function, ALUout);
 	begin
 		case (Function)
 			2'b00: ALUout = A + B;
-			2'b01: ALUout = |{A, B}; // Output 8’b00000001 if at least 1 of the 8 bits in the two inputs is 1 using a single OR operation.
-			2'b10: ALUout = &{A, B}; // Output 8’b00000001 if all of the 8 bits in the two inputs are 1 using a single AND operation.
-			2'b11: ALUout = {A, B}; // Display A in the most significant four bits and B in the lower four bits.
+			2'b01: ALUout = |{A, B};
+			2'b10: ALUout = &{A, B};
+			2'b11: ALUout = {A, B};
 			default: ALUout = 1'b0;
 		endcase
 	end
