@@ -1,5 +1,7 @@
+// Counter circuit with T Flip-Flops
 `timescale 1ns / 1ns // `timescale time_unit/time_precision
 
+// Top-level module: create a counter using T Flip=Flops
 module part1(input logic Clock, Enable, Reset, output logic [7:0] CounterValue);
 	assign a0 = Enable;
 	t_ff t_ff0(a0, Clock, Reset, CounterValue[0]);
@@ -19,6 +21,7 @@ module part1(input logic Clock, Enable, Reset, output logic [7:0] CounterValue);
 	t_ff t_ff7(a7, Clock, Reset, CounterValue[7]);
 endmodule
 
+// Module for a T Flip-Flip
 module t_ff(input logic T, Clock, Reset, output logic Q);
 	always_ff @(posedge Clock)
 	begin

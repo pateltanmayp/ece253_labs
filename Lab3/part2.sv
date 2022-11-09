@@ -1,13 +1,15 @@
+// Implement an ALU
 `timescale 1ns / 1ns // `timescale time_unit/time_precision
 
+// Top-level module: implement an ALU that uses the full-adder from part1, and implements other function
 module part2(input logic [3:0] A, B, input logic [1:0] Function, output logic [7:0] ALUout);
 	logic [3:0] s_i, c_out_i;
 	part1 adder(.a(A), .b(B), .c_in(1'b0), .s(s_i), .c_out(c_out_i));
 
 	always_comb
 	begin
-		case (Function)
-			2'b00: ALUout = {3'b000, c_out_i[3], s_i};
+		case (Function) // Select the function of the ALU
+			2'b00: ALUout = {3'b000, c_out_i[3], s_i}; // Add the two values (A, B) and pad with 0's on the MSB side
 			2'b01: ALUout = |{A, B}; // Output 8’b00000001 if at least 1 of the 8 bits in the two inputs is 1 using a single OR operation.
 			2'b10: ALUout = &{A, B}; // Output 8’b00000001 if all of the 8 bits in the two inputs are 1 using a single AND operation.
 			2'b11: ALUout = {A, B}; // Display A in the most significant four bits and B in the lower four bits.
@@ -16,6 +18,7 @@ module part2(input logic [3:0] A, B, input logic [1:0] Function, output logic [7
 	end
 endmodule
 
+// Implement a multi-bit full adder circuit
 module part1(input logic [3:0] a, b, input logic c_in, output logic [3:0] s, c_out);
 	fa fa1(.a(a[0]), .b(b[0]), .c_in(c_in), .s(s[0]), .c_out(c_out[0]));
 	fa fa2(.a(a[1]), .b(b[1]), .c_in(c_out[0]), .s(s[1]), .c_out(c_out[1]));
