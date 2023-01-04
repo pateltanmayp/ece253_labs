@@ -104,4 +104,4 @@ timer_handler:
 	lw s0, 16(sp)
 	lw s1, 20(sp)
 	addi sp, sp, 24
-	uret # Jump to program counter at interrupted location
+	uret # Jump to original program counter (pre-interrupt)

@@ -37,7 +37,7 @@ DONE:
 END:
 	ebreak
 
-# Test list
+# Sample list
 .global LIST
 .data
 LIST:

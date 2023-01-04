@@ -1,4 +1,5 @@
 # Program that implements bubble sort
+
 .global _start
 .text
 _start:
@@ -46,7 +47,7 @@ DONE_ROUTINE:
 END:
 	ebreak
 
-# Trial list for testing
+# Sample list
 .global LIST
 .data
 LIST:
